@@ -1777,7 +1777,7 @@ elif page == "MTA归因模型AB测试":
         <p style="color: #424242; margin: 0;">
             <strong>核心挑战：</strong>Last Click归因显示付费搜索贡献65%，但用户决策周期45-60天，前端渠道价值被严重低估<br>
             <strong>解决方案：</strong>构建Shapley Value归因模型，通过AB测试验证，重新分配预算<br>
-            <strong>AB测试规模：</strong>总预算的2%用于测试（$200万），验证模型效果后全量推广
+            <strong>AB测试规模：</strong>$40万用于测试，验证模型效果后全量推广
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -2252,7 +2252,7 @@ elif page == "MTA归因模型AB测试":
     st.markdown("### 💰 预算削减计算逻辑详解")
     
     # 为什么削减2500万的计算过程
-    st.markdown("#### 🧮 为什么削减Paid Search 2500万美元？")
+    st.markdown("#### 🧮 为什么削减Paid Search 1750万美元？")
     
     col1, col2 = st.columns(2)
     
@@ -2263,9 +2263,8 @@ elif page == "MTA归因模型AB测试":
             <ol style="color: #424242; margin: 0; padding-left: 20px;">
                 <li><strong>Shapley权重</strong>：Paid Search = 45%</li>
                 <li><strong>理论预算</strong>：$100M × 45% = $45M</li>
-                <li><strong>业务约束</strong>：Search占比≥30% = $30M</li>
-                <li><strong>最终预算</strong>：max($45M, $30M) = $45M</li>
-                <li><strong>削减金额</strong>：$70M - $45M = $25M</li>
+                <li><strong>业务约束</strong>：Search占比≥30% = $30M；单渠道变化≤25%</li>
+                <li><strong>最终预算</strong>：52.5M</li>
             </ol>
         </div>
         """, unsafe_allow_html=True)
