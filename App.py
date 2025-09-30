@@ -106,7 +106,7 @@ st.markdown("""
 
 st.title("🎯 抖音电商 — 物流履约业务 Demo")
 
-page = st.sidebar.radio("页面", ["说明", "对比与发展", "履约指标决策树", "平台/商家/用户可视化", "优质快递体验验证", "偏远地区物流验证", "Work in Progress"], index=0)
+page = st.sidebar.radio("页面", ["说明", "对比与发展", "履约指标决策树", "平台/商家/用户可视化", "优质快递体验验证", "偏远地区物流验证", "MTA归因模型AB测试"], index=0)
 # st.sidebar.markdown(
 #     """
 #     <div style="background-color: #e3f2fd; padding: 15px; border-radius: 8px; margin: 10px 0;">
@@ -1765,16 +1765,7 @@ elif page == "偏远地区物流验证":
     """, unsafe_allow_html=True)
 
 # ---------------- Page 7: MTA归因模型项目 ---------------- 
-elif page == "Work in Progress":
-    # 密码验证
-    st.markdown("### 🔐 访问验证")
-    password = st.text_input("请输入访问密码", type="password")
-    
-    if password != "MTA2024":
-        st.error("❌ 密码错误，无法访问此页面")
-        st.stop()
-    
-    st.success("✅ 验证成功，欢迎访问MTA归因模型项目")
+elif page == "MTA归因模型AB测试":
     st.header("🎯 MTA归因模型项目 - AB测试与预算分配深度解析")
     
     # 项目背景（简化）
@@ -1854,8 +1845,8 @@ elif page == "Work in Progress":
             <ul style="color: #424242; margin: 0; padding-left: 20px;">
                 <li><strong>分层随机</strong>：按州、年龄、收入分层，确保每组在各维度分布相似</li>
                 <li><strong>哈希算法</strong>：user_id % 2 确保同一用户始终在同一组，避免分组漂移</li>
-                <li><strong>样本量</strong>：每组10万用户（合计20万）</li>
-                <li><strong>测试预算</strong>：每组$100万（总$200万）</li>
+                <li><strong>样本量</strong>：每组5万用户（合计10万）</li>
+                <li><strong>测试预算</strong>：每组$20万（总$40万）</li>
                 <li><strong>时间窗口</strong>：60天实验周期（符合45-60天决策周期）</li>
             </ul>
         </div>
@@ -1873,11 +1864,27 @@ elif page == "Work in Progress":
         <ul style="color: #424242; margin: 10px 0 0 0; padding-left: 20px;">
             <li><strong>α=0.05</strong>：假阳性率（5%显著性水平）</li>
             <li><strong>1-β=0.8</strong>：80%检测效力</li>
-            <li><strong>MDE</strong>：转化率提升0.05%、CPA下降10%</li>
-            <li><strong>最终确定</strong>：每组覆盖10万用户（合计20万）</li>
+            <li><strong>MDE</strong>：转化率提升0.6%、CPA下降28.6%</li>
+            <li><strong>最终确定</strong>：每组覆盖5万用户（合计10万）</li>
         </ul>
     </div>
     """, unsafe_allow_html=True)
+    
+    # # 功效分析讨论
+    # st.markdown("""
+    # <div style="background-color: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; border-radius: 4px; margin: 15px 0;">
+    #     <h4 style="color: #f57c00; margin: 0 0 10px 0;">🤔 功效分析讨论</h4>
+    #     <p style="color: #424242; margin: 0;">
+    #         <strong>问题：</strong>功效分析能算出来需要10万用户吗？这个数字合理吗？
+    #     </p>
+    #     <ul style="color: #424242; margin: 10px 0 0 0; padding-left: 20px;">
+    #         <li><strong>计算验证</strong>：基于2%vs1.4%的转化率差异，α=0.05，1-β=0.8，功效分析确实支持每组5万用户</li>
+    #         <li><strong>效应量评估</strong>：Cohen's h = 0.42（中等效应量），样本量需求合理</li>
+    #         <li><strong>业务合理性</strong>：10万用户样本足够代表目标人群，符合保险行业AB测试标准</li>
+    #         <li><strong>成本效益</strong>：相比1亿用户总量，2%测试比例既保证统计功效又控制风险</li>
+    #     </ul>
+    # </div>
+    # """, unsafe_allow_html=True)
     
     # 分组平衡性检验
     st.markdown("### ⚖️ 分组平衡性检验")
@@ -1901,13 +1908,13 @@ elif page == "Work in Progress":
     with col1:
         st.markdown("""
         <div style="background-color: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; border-radius: 4px; margin: 10px 0;">
-            <h4 style="color: #f57c00; margin: 0 0 10px 0;">🎯 实验组策略 ($100万预算)</h4>
+            <h4 style="color: #f57c00; margin: 0 0 10px 0;">🎯 实验组策略 ($20万预算)</h4>
             <ul style="color: #424242; margin: 0; padding-left: 20px;">
-                <li><strong>Paid Search</strong>：$70万 → $45万 (-$25万)</li>
-                <li><strong>Display</strong>：$15万 → $15万 (0)</li>
-                <li><strong>Social Media</strong>：$10万 → $18万 (+$8万)</li>
-                <li><strong>Affiliate</strong>：$5万 → $22万 (+$17万)</li>
-                <li><strong>总预算</strong>：$100万 (保持不变)</li>
+                <li><strong>Paid Search</strong>：$14万 → $10.5万 (-$3.5万，受25%限制)</li>
+                <li><strong>Display</strong>：$3万 → $4万 (+$1万)</li>
+                <li><strong>Social Media</strong>：$2万 → $2.5万 (+$0.5万)</li>
+                <li><strong>Affiliate</strong>：$1万 → $3万 (+$2万)</li>
+                <li><strong>总预算</strong>：$20万 (保持不变)</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -1915,13 +1922,13 @@ elif page == "Work in Progress":
     with col2:
         st.markdown("""
         <div style="background-color: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; border-radius: 4px; margin: 10px 0;">
-            <h4 style="color: #1976d2; margin: 0 0 10px 0;">📊 对照组策略 ($100万预算)</h4>
+            <h4 style="color: #1976d2; margin: 0 0 10px 0;">📊 对照组策略 ($20万预算)</h4>
             <ul style="color: #424242; margin: 0; padding-left: 20px;">
-                <li><strong>Paid Search</strong>：$65万 (65%基准，Last Click权重)</li>
-                <li><strong>Display</strong>：$5万 (5%基准，Last Click权重)</li>
-                <li><strong>Social Media</strong>：$8万 (8%基准，Last Click权重)</li>
-                <li><strong>Affiliate</strong>：$22万 (22%基准，Last Click权重)</li>
-                <li><strong>总预算</strong>：$100万 (保持不变)</li>
+                <li><strong>Paid Search</strong>：$13万 (65%基准，Last Click权重)</li>
+                <li><strong>Display</strong>：$1万 (5%基准，Last Click权重)</li>
+                <li><strong>Social Media</strong>：$1.6万 (8%基准，Last Click权重)</li>
+                <li><strong>Affiliate</strong>：$4.4万 (22%基准，Last Click权重)</li>
+                <li><strong>总预算</strong>：$20万 (保持不变)</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -1931,11 +1938,11 @@ elif page == "Work in Progress":
     
     # 模拟AB测试数据
     np.random.seed(42)
-    n_users = 500000  # 每组50万用户
+    n_users = 50000  # 每组5万用户
     
     # 实验组数据
     treatment_data = {
-        'conversions': np.random.binomial(1, 0.002, n_users),  # 0.2%转化率
+        'conversions': np.random.binomial(1, 0.02, n_users),  # 2%转化率
         'revenue': np.random.normal(1200, 200, n_users),  # 平均收入$1200
         'cost': np.random.normal(200, 20, n_users),  # 平均成本$200
         'group': '实验组'
@@ -1943,8 +1950,8 @@ elif page == "Work in Progress":
     
     # 对照组数据
     control_data = {
-        'conversions': np.random.binomial(1, 0.001, n_users),  # 0.1%转化率
-        'revenue': np.random.normal(1000, 180, n_users),  # 平均收入$1000
+        'conversions': np.random.binomial(1, 0.014, n_users),  # 1.4%转化率
+        'revenue': np.random.normal(1200, 180, n_users),  # 平均收入$1200
         'cost': np.random.normal(280, 25, n_users),  # 平均成本$280
         'group': '对照组'
     }
@@ -2006,7 +2013,7 @@ elif page == "Work in Progress":
             </p>
             <ul style="color: #424242; margin: 10px 0 0 0; padding-left: 20px;">
                 <li>实验组转化数：1,000</li>
-                <li>对照组转化数：500</li>
+                <li>对照组转化数：714</li>
                 <li>Z统计量：15.8</li>
                 <li>p值：< 0.001</li>
                 <li>结论：高度显著</li>
@@ -2059,9 +2066,9 @@ elif page == "Work in Progress":
     
     test_results = pd.DataFrame({
         '指标': ['转化率', 'CPA', 'ROAS', '总收入'],
-        '实验组': ['0.200%', '$200', '6.0x', '$1.2M'],
-        '对照组': ['0.100%', '$280', '3.6x', '$1.0M'],
-        '提升幅度': ['+100%', '-28.6%', '+66.7%', '+20%'],
+        '实验组': ['2.000%', '$200', '6.0x', '$1.2M'],
+        '对照组': ['1.428%', '$280', '4.24x', '$0.86M'],
+        '提升幅度': ['+40%', '-28.6%', '+41.5%', '+39.5%'],
         '统计量': ['Z=15.8', 't=-12.5', 't=8.2', 't=5.1'],
         'p值': ['<0.001', '<0.001', '<0.001', '<0.001'],
         '显著性': ['***', '***', '***', '***']
@@ -2123,9 +2130,9 @@ elif page == "Work in Progress":
         <div style="background-color: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; border-radius: 4px; margin: 10px 0;">
             <h4 style="color: #f57c00; margin: 0 0 10px 0;">💼 业务显著性</h4>
             <ul style="color: #424242; margin: 0; padding-left: 20px;">
-                <li>转化率：0.1%→0.2%（翻倍）</li>
-                <li>CPA：280→200（-28%）</li>
-                <li>ROAS：2.1→3.2（+52%）</li>
+                <li>转化率：1.4%→2.0%（+40%）</li>
+                <li>CPA：280→200（-28.6%）</li>
+                <li>ROAS：4.24→6.0（+41.5%）</li>
                 <li>均远超MDE阈值</li>
             </ul>
         </div>
@@ -2272,7 +2279,7 @@ elif page == "Work in Progress":
                 <li><strong>品牌安全要求</strong>：Search占比≥30%</li>
                 <li><strong>渠道容量限制</strong>：Social≤$30M</li>
                 <li><strong>季节性调整</strong>：Q4预算±20%</li>
-                <li><strong>风险控制</strong>：单渠道变化≤25%</li>
+                <li><strong>风险控制</strong>：单渠道变化≤25%（如Paid Search 70M→45M=35%变化，如被限制应为70M-17.5M=52.5M）</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -2282,20 +2289,29 @@ elif page == "Work in Progress":
     
     calculation_steps = pd.DataFrame({
         '步骤': ['Shapley权重分析', '理论预算计算', '约束条件应用', '最终预算分配', '预算变化'],
-        'Paid Search': ['45%', '$45M', '$45M (≥30%)', '$45M', '-$25M'],
-        'Display': ['15%', '$15M', '$15M', '$15M', '$0M'],
-        'Social Media': ['18%', '$18M', '$18M', '$18M', '+$8M'],
-        'Affiliate': ['22%', '$22M', '$22M', '$22M', '+$17M'],
-        '说明': [
-            'Shapley Value归因结果',
-            '按权重分配预算',
-            '应用业务约束条件',
-            '最终优化分配',
-            '相比原预算的变化'
-        ]
+        'Paid Search': ['45%', '$45M', '$52.5M (受25%限制)', '$52.5M', '-$17.5M'],
+        'Display': ['15%', '$15M', '$20M', '$20M', '+$5M'],
+        'Social Media': ['18%', '$18M', '$12.5M', '$12.5M', '+$2.5M'],
+        'Affiliate': ['22%', '$22M', '$15M', '$15M', '+$10M'],
     })
     
     st.dataframe(calculation_steps, use_container_width=True)
+    
+    # # Display预算增加说明
+    # st.markdown("""
+    # <div style="background-color: #e8f5e8; border-left: 4px solid #4caf50; padding: 15px; border-radius: 4px; margin: 15px 0;">
+    #     <h4 style="color: #2e7d32; margin: 0 0 10px 0;">💡 Display预算增加说明</h4>
+    #     <p style="color: #424242; margin: 0;">
+    #         根据Shapley值分析，Display渠道贡献15%，因此预算从$15M增加到$20M，增加$5M：
+    #     </p>
+    #     <ul style="color: #424242; margin: 10px 0 0 0; padding-left: 20px;">
+    #         <li><strong>Shapley权重</strong>：Display在归因模型中贡献15%，高于Last Click的5%</li>
+    #         <li><strong>协同效应</strong>：Display与Search渠道有显著的协同转化效应</li>
+    #         <li><strong>品牌建设</strong>：Display有助于品牌认知和长期用户培养</li>
+    #         <li><strong>预算优化</strong>：从Paid Search削减的$17.5M中分配$5M给Display</li>
+    #     </ul>
+    # </div>
+    # """, unsafe_allow_html=True)
     
     # # 预算优化算法实现
     # st.markdown("#### 🎯 预算优化算法实现")
@@ -2372,11 +2388,11 @@ elif page == "Work in Progress":
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.metric("转化率提升", "0.1% → 0.2%", "+100%")
+        st.metric("转化率提升", "1.4% → 2.0%", "+40%")
     with col2:
         st.metric("CPA降低", "$280 → $200", "-28.6%")
     with col3:
-        st.metric("ROAS提升", "2.1x → 3.2x", "+52.4%")
+        st.metric("ROAS提升", "4.24x → 6.0x", "+41.5%")
     
     # 关键学习点
     st.markdown("### 💡 关键学习点")
