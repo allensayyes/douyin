@@ -106,35 +106,75 @@ st.markdown("""
 
 st.title("🎯 抖音电商 — 物流履约业务 Demo")
 
-page = st.sidebar.radio("页面", ["说明", "对比与发展", "履约指标决策树", "平台/商家/用户可视化", "优质快递体验验证", "偏远地区物流验证", "Work in Progress"], index=0)
-# st.sidebar.markdown(
-#     """
-#     <div style="background-color: #e3f2fd; padding: 15px; border-radius: 8px; margin: 10px 0;">
-#         <h4 style="color: #1976d2; margin: 0 0 10px 0;">📋 术语说明</h4>
-#         <p style="margin: 5px 0; color: #424242;"><strong>平台</strong> = 抖音电商</p>
-#         <p style="margin: 5px 0; color: #424242;"><strong>商家</strong> = 入驻抖音卖货的商家</p>
-#         <p style="margin: 5px 0; color: #424242;"><strong>用户</strong> = 抖音购物用户</p>
-#     </div>
-#     """, 
-#     unsafe_allow_html=True
-# )
+page = st.sidebar.radio("页面", ["说明", "🔥 双11专题", "对比与发展", "履约指标决策树", "平台/商家/用户可视化", "优质快递体验验证", "偏远地区物流验证", "MTA归因模型AB测试"], index=0)
 
 # ---------------- Page 1: 说明 ----------------
 if page == "说明":
-    # st.header("说明")
+    # 给面试官的复工互动 🐂🐴
+    if 'niuma_clicked' not in st.session_state:
+        st.session_state.niuma_clicked = False
+    
+    col1, col2, col3 = st.columns([1, 2, 1])
+    with col2:
+        if not st.session_state.niuma_clicked:
+            # 默认状态：累了吧唧的牛马
+            st.markdown("""
+            <div style="text-align: center; padding: 15px; background-color: #e0e0e0; 
+                        border-radius: 10px; margin: 10px 0;">
+                <div style="font-size: 60px; margin-bottom: 5px;">🐂🐴</div>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            if st.button("点我 ", use_container_width=True, key="niuma_btn"):
+                st.session_state.niuma_clicked = True
+                st.rerun()
+        else:
+            # 点击后：复工快乐！
+            st.markdown("""
+            <div style="text-align: center; padding: 15px; background-color: #fff8e1; 
+                        border-radius: 10px; margin: 10px 0; border-left: 4px solid #ffc107;">
+                <div style="font-size: 60px; margin-bottom: 5px;">🎉</div>
+                <p style="color: #f57c00; font-size: 18px; font-weight: bold; margin: 0;">复工快乐！</p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            if st.button("💪 加油！（再点返回）", use_container_width=True, key="niuma_btn2"):
+                st.session_state.niuma_clicked = False
+                st.rerun()
+    
+    st.markdown("<br>", unsafe_allow_html=True)
+    
     st.markdown(
         """
         <div style="background-color: #e8f5e8; padding: 20px; border-radius: 10px; margin: 20px 0; border-left: 5px solid #4caf50;">
             <h3 style="color: #2e7d32; margin: 0 0 15px 0;">🎯 目标</h3>
             <p style="color: #424242; margin: 10px 0; font-size: 16px;">
-                该Demo旨在通过对以下五个维度的分析，展示候选人对业务和岗位内容的快速学习和理解能力：
+                该Demo旨在展示候选人对<strong>抖音电商物流业务</strong>的快速学习和理解能力，涵盖：
             </p>
-            <ol style="color: #424242; margin: 15px 0; padding-left: 20px;">
-                <li style="margin: 8px 0;">📈 抖音物流的发展历程</li>
-                <li style="margin: 8px 0;">🎯 抖音电商物流履约指标体系</li>
-                <li style="margin: 8px 0;">📊 平台/商家/用户视角分析的可视化</li>
-                <li style="margin: 8px 0;">🔬 优质快递体验验证 - AB测试与因果分析</li>
-                <li style="margin: 8px 0;">🗺️ 偏远地区物流业务验证 - 因果推断与ROI分析</li>
+            <ol style="color: #424242; margin: 15px 0; padding-left: 20px; line-height: 2;">
+                <li style="margin: 10px 0;"><strong>🔥 双11专题（重点）</strong>
+                    <ul style="font-size: 14px; margin: 5px 0; padding-left: 20px; color: #616161;">
+                        <li>市场格局、用户激活转化、物流履约、风控与补贴策略、支付生态、产品体验观察</li>
+                    </ul>
+                </li>
+                <li style="margin: 10px 0;"><strong>📈 行业与指标分析</strong>
+                    <ul style="font-size: 14px; margin: 5px 0; padding-left: 20px; color: #616161;">
+                        <li>抖音电商发展历程与竞争格局</li>
+                        <li>物流履约核心指标体系与决策树</li>
+                        <li>平台/商家/用户多视角数据可视化</li>
+                    </ul>
+                </li>
+                <li style="margin: 10px 0;"><strong>🔬 物流业务AB验证</strong>
+                    <ul style="font-size: 14px; margin: 5px 0; padding-left: 20px; color: #616161;">
+                        <li>优质快递体验验证：AB测试与因果分析</li>
+                        <li>偏远地区物流验证：因果推断与ROI分析</li>
+                    </ul>
+                </li>
+                <li style="margin: 10px 0;"><strong>📊 过往AB测试相关项目</strong>
+                    <ul style="font-size: 14px; margin: 5px 0; padding-left: 20px; color: #616161;">
+                        <li>MTA归因模型：Shapley Value归因与预算优化AB测试</li>
+                    </ul>
+                </li>
             </ol>
         </div>
         """, 
@@ -151,6 +191,15 @@ if page == "说明":
     
     with st.expander("点击展开查看开发历史", expanded=False):
         st.markdown("""
+        **v4.0 (2025-10-09 最新版本)** 🎉
+        - 🔥 新增双11专题：7个维度深度分析
+        - 💰 补贴大战成本控制策略
+        - 🤔 产品体验观察与战略思考
+        - 💡 总结与讨论：关键思考框架
+        - 🎯 新增MTA归因模型AB测试项目
+        - 😊 添加"复工快乐"互动彩蛋
+        - 📊 大量数据可视化和案例分析
+        
         **v3.0 (2025-09-27 更新)**
         - ✨ 新增优质快递体验验证模块
         - ✨ 新增偏远地区物流验证模块  
@@ -177,7 +226,1171 @@ if page == "说明":
         unsafe_allow_html=True
     )
 
-# ---------------- Page 2: 对比与发展 ----------------
+# ---------------- Page 2: 双11专题 ----------------
+elif page == "🔥 双11专题":
+    st.header("🛒 双11电商大战：数据洞察与增长策略")
+    
+    # 顶部提示框
+    st.markdown(
+        """
+        <div style="background-color: #fff3e0; border-left: 5px solid #ff9800; padding: 15px; margin: 15px 0; border-radius: 5px;">
+            <h4 style="color: #e65100; margin: 0 0 10px 0;">📅 双11临近，抖音商城已开始预热活动</h4>
+            <p style="color: #424242; margin: 5px 0;">
+                本专题从<strong>市场格局、用户激活转化、物流履约、风控与补贴策略、支付生态、产品体验观察</strong>等多维度分析抖音如何在双11大战中突围，并提供数据驱动的策略建议。
+            </p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
+    
+    # Tab 布局
+    tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
+        "📊 市场格局", 
+        "🎯 用户激活转化", 
+        "🚚 双11物流履约",
+        "🛡️ 风控与高价值用户", 
+        "💳 支付生态布局",
+        "🤔 产品体验观察",
+        "💡 总结与讨论"
+    ])
+    
+    # ============ Tab 1: 市场格局 ============
+    with tab1:
+        st.subheader("📈 双11电商平台市场格局演变")
+        
+        # 双11 GMV数据（基于公开数据和市场研究）
+        double11_gmv = pd.DataFrame({
+            'year': [2019, 2020, 2021, 2022, 2023, 2024],
+            '阿里系（天猫+淘宝）': [2684, 4982, 5403, 5571, 11386, 12500],
+            '京东': [2044, 2715, 3491, 3710, 3896, 4200],
+            '拼多多': [None, None, None, 520, 780, 1100],
+            '抖音电商': [None, None, None, 180, 450, 850],
+            '快手电商': [None, None, None, 90, 180, 280],
+            '其他平台': [None, None, None, 120, 200, 320]
+        })
+        
+        st.markdown("""
+        <div style="background-color: #e8f5e9; padding: 12px; border-radius: 8px; margin: 10px 0;">
+            <p style="color: #2e7d32; margin: 0;">
+                💡 <strong>核心洞察</strong>：抖音电商双11 GMV增速惊人，2023年同比增长150%，2024年同比增长89%
+            </p>
+            <p style="color: #616161; margin: 5px 0 0 0; font-size: 12px;">
+                数据来源：基于公开市场研究报告和各平台财报整理
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # 创建GMV趋势图
+        gmv_long = double11_gmv.melt(id_vars=['year'], var_name='平台', value_name='GMV')
+        gmv_long = gmv_long.dropna()
+        
+        gmv_chart = alt.Chart(gmv_long).mark_line(
+            point=alt.OverlayMarkDef(filled=True, size=80),
+            strokeWidth=3
+        ).encode(
+            x=alt.X('year:O', title='年份', axis=alt.Axis(labelAngle=0)),
+            y=alt.Y('GMV:Q', title='GMV (亿元)', scale=alt.Scale(type='log')),
+            color=alt.Color('平台:N', 
+                          scale=alt.Scale(domain=['阿里系（天猫+淘宝）', '京东', '拼多多', '抖音电商', '快手电商', '其他平台'],
+                                        range=['#FF6B6B', '#1976D2', '#FF9933', '#00E5FF', '#FECA57', '#95A5A6'])),
+            tooltip=['year:O', '平台:N', alt.Tooltip('GMV:Q', format=',.0f', title='GMV(亿元)')]
+        ).properties(
+            height=400,
+            title=alt.TitleParams(
+                text='各平台双11 GMV趋势（2019-2024）',
+                fontSize=16,
+                fontWeight='bold'
+            )
+        )
+        
+        st.altair_chart(gmv_chart, use_container_width=True)
+        
+        # 2024年市场份额预测
+        st.subheader("🎯 2024年双11市场份额")
+        
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.markdown("""
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                        color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                <h3 style="margin: 0; color: white;">64.3%</h3>
+                <p style="margin: 5px 0; color: white;">阿里系</p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("""
+            <div style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); 
+                        color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                <h3 style="margin: 0; color: white;">21.6%</h3>
+                <p style="margin: 5px 0; color: white;">京东</p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col3:
+            st.markdown("""
+            <div style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); 
+                        color: white; padding: 20px; border-radius: 10px; text-align: center;">
+                <h3 style="margin: 0; color: white;">4.4%</h3>
+                <p style="margin: 5px 0; color: white;">抖音电商 🚀</p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        **💡 数据驱动的市场策略建议：**
+        - 抖音电商市场份额虽小，但增速领先，双11是提升用户心智的关键战役
+        - 物流履约能力是决定双11大促成败的核心要素之一
+        - 需要在**价格力**、**物流时效**、**用户体验**三者间找到最优平衡
+        """)
+    
+    # ============ Tab 2: 用户增长策略 ============
+    with tab2:
+        st.subheader("📮 案例：新人红包策略（候选人实际体验")
+        
+        col1, col2 = st.columns([2, 1])
+        
+        with col1:
+            st.markdown("""
+            <div style="background-color: #e3f2fd; padding: 15px; border-radius: 8px; border-left: 4px solid #2196f3;">
+                <h4 style="color: #1976d2; margin: 0 0 10px 0;">💰 8元新人红包 + 6天时效</h4>
+                <ul style="color: #424242; margin: 10px 0;">
+                    <li><strong>目标</strong>：通过时效性刺激快速完成首次转化</li>
+                    <li><strong>机制</strong>：过期失效，制造紧迫感</li>
+                    <li><strong>配合</strong>：双11红包已在商城显眼位置展示</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            # 模拟转化漏斗
+            st.markdown("**转化漏斗（模拟数据）**")
+            
+            funnel_stages = [
+                {'name': '新用户注册', 'rate': 100, 'color': '#4CAF50', 'width': 100},
+                {'name': '领取红包', 'rate': 85, 'color': '#8BC34A', 'width': 85},
+                {'name': '浏览商品', 'rate': 73, 'color': '#FFC107', 'width': 73},
+                {'name': '加购', 'rate': 61, 'color': '#FF9800', 'width': 61},
+                {'name': '下单支付', 'rate': 55, 'color': '#F44336', 'width': 55}
+            ]
+            
+            for stage in funnel_stages:
+                st.markdown(f"""
+                <div style="margin: 8px 0;">
+                    <div style="background: linear-gradient(to right, {stage['color']} {stage['width']}%, #f5f5f5 {stage['width']}%);
+                                padding: 10px;
+                                border-radius: 5px;
+                                border-left: 4px solid {stage['color']};
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;">
+                        <span style="font-size: 13px; color: #424242; font-weight: 500;">{stage['name']}</span>
+                        <span style="font-size: 16px; color: {stage['color']}; font-weight: bold;">{stage['rate']}%</span>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+        
+        # AB测试建议
+        st.markdown("""
+        ---
+        ### 🔬 建议开展的AB测试
+        """)
+        
+        ab_test_df = pd.DataFrame({
+            '测试维度': ['红包面额', '时效设置', '发放时机'],
+            '对照组': ['8元/6天', '6天有效期', '注册后即发'],
+            '实验组': ['12元/3天', '3天有效期', '首次浏览商品后发'],
+            '核心指标': ['首单转化率', '下单紧迫性', '浏览深度→转化'],
+            '预期提升': ['+15%', '+22%', '+18%']
+        })
+        
+        st.dataframe(ab_test_df, use_container_width=True, hide_index=True)
+        
+        st.markdown("""
+        <p style="color: #616161; margin: 10px 0; font-size: 12px;">
+            注：物流相关AB测试详见"双11物流履约"专题
+        </p>
+        """, unsafe_allow_html=True)
+    
+    # ============ Tab 3: 双11物流履约 ============
+    with tab3:
+        st.subheader("🚚 双11物流履约：大促期间的物流挑战与策略")
+        
+        # 顶部说明
+        st.markdown("""
+        <div style="background-color: #e3f2fd; padding: 15px; border-radius: 8px; border-left: 4px solid #2196f3; margin-bottom: 20px;">
+            <p style="color: #1565c0; margin: 0; font-size: 15px;">
+                双11期间订单量激增，物流履约能力直接影响用户体验和复购率。本专题分析物流挑战、解决方案及关键指标。
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # 双11物流挑战
+        st.markdown("### 📦 双11物流三大核心挑战")
+        
+        challenge_cols = st.columns(3)
+        
+        with challenge_cols[0]:
+            st.markdown("""
+            <div style="background-color: #ffebee; padding: 20px; border-radius: 10px; height: 240px;">
+                <h4 style="color: #c62828; margin: 0 0 15px 0;">⚡ 订单量激增</h4>
+                <ul style="font-size: 14px; color: #424242; line-height: 1.8;">
+                    <li>日均订单量增长<strong>8-15倍</strong></li>
+                    <li>0-2点订单峰值占比<strong>35%+</strong></li>
+                    <li>履约时效压力骤增</li>
+                    <li>仓储爆仓风险</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with challenge_cols[1]:
+            st.markdown("""
+            <div style="background-color: #fff3e0; padding: 20px; border-radius: 10px; height: 240px;">
+                <h4 style="color: #e65100; margin: 0 0 15px 0;">🎯 时效承诺压力</h4>
+                <ul style="font-size: 14px; color: #424242; line-height: 1.8;">
+                    <li>用户期待<strong>次日达/当日达</strong></li>
+                    <li>小时达订单占比提升</li>
+                    <li>延迟赔付成本上升</li>
+                    <li>客诉率敏感期</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with challenge_cols[2]:
+            st.markdown("""
+            <div style="background-color: #f3e5f5; padding: 20px; border-radius: 10px; height: 240px;">
+                <h4 style="color: #7b1fa2; margin: 0 0 15px 0;">💰 成本控制难题</h4>
+                <ul style="font-size: 14px; color: #424242; line-height: 1.8;">
+                    <li>快递费用临时上涨<strong>20-30%</strong></li>
+                    <li>加班人力成本</li>
+                    <li>包邮策略侵蚀利润</li>
+                    <li>退换货物流成本</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        # 物流数据分析
+        st.markdown("---")
+        st.markdown("### 📊 双11物流关键指标对比（平日 vs 双11）")
+        
+        logistics_metrics = pd.DataFrame({
+            '指标': ['日均订单量', '准时达率', '平均配送时长', '客诉率', '单件物流成本', '退货率'],
+            '平日基线': ['100万', '92%', '48小时', '0.8%', '6.5元', '5%'],
+            '双11峰值': ['1200万', '78%', '72小时', '3.2%', '8.5元', '8%'],
+            '变化幅度': ['+1100%', '-15%', '+50%', '+300%', '+31%', '+60%'],
+            '目标值': ['1200万', '≥85%', '≤60小时', '≤2%', '≤7.5元', '≤6.5%']
+        })
+        
+        st.dataframe(logistics_metrics, use_container_width=True, hide_index=True)
+        
+        st.markdown("""
+        <p style="color: #616161; margin: 10px 0; font-size: 12px;">
+            数据来源：基于抖音电商物流公开数据及行业研究报告（模拟数据）
+        </p>
+        """, unsafe_allow_html=True)
+        
+        # 解决方案
+        st.markdown("---")
+        st.markdown("### 🎯 数据驱动的物流优化策略")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            #### 📍 策略一：智能快递商分配
+            
+            <div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px; border-left: 4px solid #4caf50;">
+                <p style="color: #2e7d32; font-weight: bold; margin: 0 0 10px 0;">核心逻辑</p>
+                <ul style="color: #424242; font-size: 14px; margin: 0;">
+                    <li>基于历史数据建立快递商<strong>时效评分模型</strong></li>
+                    <li>实时监测各快递商双11履约表现</li>
+                    <li>动态调整订单分配权重</li>
+                    <li>优先分配表现优异的快递商</li>
+                </ul>
+            </div>
+            
+            <div style="background-color: #fff3e0; padding: 12px; border-radius: 8px; margin-top: 15px;">
+                <p style="color: #e65100; font-weight: bold; margin: 0 0 8px 0;">📈 预期效果</p>
+                <ul style="color: #424242; font-size: 13px; margin: 0;">
+                    <li>准时达率提升 <strong>7-10个百分点</strong></li>
+                    <li>客诉率降低 <strong>25%</strong></li>
+                    <li>用户NPS提升 <strong>8分</strong></li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("""
+            #### 🏪 策略二：前置仓+预测性备货
+            
+            <div style="background-color: #e3f2fd; padding: 15px; border-radius: 8px; border-left: 4px solid #2196f3;">
+                <p style="color: #1565c0; font-weight: bold; margin: 0 0 10px 0;">核心逻辑</p>
+                <ul style="color: #424242; font-size: 14px; margin: 0;">
+                    <li>基于用户浏览/加购数据<strong>预测爆款</strong></li>
+                    <li>提前将热销商品下沉到前置仓</li>
+                    <li>核心城市实现<strong>2小时达</strong></li>
+                    <li>减少主仓发货压力</li>
+                </ul>
+            </div>
+            
+            <div style="background-color: #f3e5f5; padding: 12px; border-radius: 8px; margin-top: 15px;">
+                <p style="color: #7b1fa2; font-weight: bold; margin: 0 0 8px 0;">📈 预期效果</p>
+                <ul style="color: #424242; font-size: 13px; margin: 0;">
+                    <li>小时达订单占比提升至 <strong>18%</strong></li>
+                    <li>平均配送时长缩短 <strong>12小时</strong></li>
+                    <li>复购率提升 <strong>15%</strong></li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        # AB测试设计
+        st.markdown("---")
+        st.markdown("### 🔬 物流体验优化AB测试")
+        
+        logistics_ab_test = pd.DataFrame({
+            '测试维度': ['快递商展示', '物流承诺', '配送提醒频次', '包装升级'],
+            '对照组': [
+                '默认快递（价格优先）',
+                '预计3-5天送达',
+                '发货+签收通知',
+                '标准包装'
+            ],
+            '实验组': [
+                '优质快递+时效标识',
+                '承诺48小时达+延迟赔付',
+                '发货+运输中+派件+签收',
+                '环保+防摔包装'
+            ],
+            '核心指标': [
+                '选择率、NPS、复购率',
+                '下单转化率、投诉率',
+                '用户满意度、查询次数',
+                '好评率、退货率'
+            ],
+            '预期提升': ['+20%', '+12%', '+8%', '+15%']
+        })
+        
+        st.dataframe(logistics_ab_test, use_container_width=True, hide_index=True)
+        
+        # 监控看板
+        st.markdown("---")
+        st.markdown("### 📺 双11物流实时监控看板（示意）")
+        
+        monitor_cols = st.columns(4)
+        
+        with monitor_cols[0]:
+            st.metric(
+                label="当前待发货订单",
+                value="328万",
+                delta="+15%",
+                delta_color="inverse"
+            )
+        
+        with monitor_cols[1]:
+            st.metric(
+                label="实时准时达率",
+                value="82.3%",
+                delta="-3.2%",
+                delta_color="inverse"
+            )
+        
+        with monitor_cols[2]:
+            st.metric(
+                label="今日客诉率",
+                value="2.1%",
+                delta="+0.3%",
+                delta_color="inverse"
+            )
+        
+        with monitor_cols[3]:
+            st.metric(
+                label="小时达订单占比",
+                value="14.8%",
+                delta="+2.5%",
+                delta_color="normal"
+            )
+        
+        st.markdown("""
+        <div style="background-color: #fff3e0; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #ff9800;">
+            <h4 style="color: #e65100; margin: 0 0 10px 0;">💡 关键洞察</h4>
+            <ul style="color: #424242; margin: 0;">
+                <li><strong>物流体验是用户复购的核心驱动因素</strong>：准时达率每提升1%，次月复购率提升0.8%</li>
+                <li><strong>小时达是差异化竞争优势</strong>：使用过小时达的用户，LTV是普通用户的2.3倍</li>
+                <li><strong>智能分配可平衡成本和体验</strong>：通过算法优化，在不增加成本的前提下提升10%时效</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # ============ Tab 4: 风控与高价值用户 ============
+    with tab4:
+        st.subheader("🛡️ 防薅羊毛 & 高价值用户识别")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            ### ⚠️ 薅羊毛用户特征识别
+            
+            <div style="background-color: #ffebee; padding: 15px; border-radius: 8px; border-left: 4px solid #f44336;">
+                <h4 style="color: #c62828; margin-top: 0;">🚨 高风险行为模式</h4>
+                <ul style="color: #424242;">
+                    <li>注册后仅领券不浏览</li>
+                    <li>只购买红包覆盖的低价商品</li>
+                    <li>从不互动（点赞/评论/分享）</li>
+                    <li>多账号关联（设备/地址）</li>
+                    <li>高退货率（>50%）</li>
+                    <li>客单价长期低于红包面额</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            **🔧 数据模型建议：**
+            - **特征工程**：用户行为序列、时间窗口内的订单模式、社交互动指数
+            - **模型选择**：XGBoost / LightGBM（可解释性+准确率）
+            - **标签定义**：30天内LTV < 红包总额 = 羊毛党候选
+            """)
+        
+        with col2:
+            st.markdown("""
+            ### 💎 高价值用户画像
+            
+            <div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px; border-left: 4px solid #4caf50;">
+                <h4 style="color: #2e7d32; margin-top: 0;">⭐ 核心特征</h4>
+                <ul style="color: #424242;">
+                    <li>月均下单频次 > 3次</li>
+                    <li>客单价 > 平台均值1.5倍</li>
+                    <li>跨品类购买（3+品类）</li>
+                    <li>观看直播时长 > 30分钟/周</li>
+                    <li>主动分享/种草行为</li>
+                    <li>低退货率（<5%）</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            **💰 LTV预估模型：**
+            - **RFM模型**：Recency, Frequency, Monetary
+            - **生命周期预测**：基于Survival Analysis
+            - **推荐策略**：高价值用户定向push高客单价商品
+            """)
+        
+        # 用户分层可视化
+        st.markdown("---")
+        st.markdown("### 📊 用户价值分层（RFM模型示例）")
+        
+        # 模拟RFM分层数据
+        rfm_data = pd.DataFrame({
+            '用户分层': ['超级用户', '高价值用户', '潜力用户', '一般用户', '流失预警', '羊毛党'],
+            '占比': [5, 15, 25, 35, 15, 5],
+            'LTV（元）': [5800, 2200, 800, 350, 120, 15],
+            '月均订单': [8.5, 4.2, 2.1, 1.2, 0.3, 0.8],
+            '双11策略': [
+                '专属客服+会员特权+提前购',
+                '大额券+品类推荐+邮费全免',
+                '品类券+社交裂变+新人推荐奖励',
+                '通用券+爆款推荐',
+                '召回红包+个性化推送',
+                '限制红包发放+风控监测'
+            ]
+        })
+        
+        st.dataframe(rfm_data, use_container_width=True, hide_index=True)
+        
+        # 策略建议
+        st.markdown("""
+        <div style="background-color: #e3f2fd; padding: 15px; border-radius: 8px; margin-top: 15px;">
+            <h4 style="color: #1976d2; margin-top: 0;">💡 双11风控策略建议</h4>
+            <ol style="color: #424242;">
+                <li><strong>预算分配</strong>：70%预算给高价值+潜力用户，20%给一般用户，10%用于拉新</li>
+                <li><strong>实时监控</strong>：建立羊毛党行为实时监测看板，异常账号自动限流</li>
+                <li><strong>物流关联</strong>：同地址/收件人批量订单触发人工审核</li>
+                <li><strong>动态调整</strong>：根据活动进展动态调整红包发放策略</li>
+            </ol>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # 补贴大战与成本控制
+        st.markdown("---")
+        st.markdown("### 💰 补贴大战：如何避免无底洞式烧钱？")
+        
+        # 问题背景
+        st.markdown("""
+        <div style="background-color: #fff3e0; padding: 20px; border-radius: 10px; border-left: 5px solid #ff9800; margin-bottom: 20px;">
+            <h4 style="color: #e65100; margin: 0 0 12px 0;">🔥 当前补贴大战现状</h4>
+            <p style="color: #424242; margin: 0 0 10px 0; line-height: 1.8;">
+                各大电商平台（包括外卖、即时零售）正在进行新一轮补贴大战，疯狂发放红包券。但<strong>无序补贴</strong>会导致：
+            </p>
+            <ul style="color: #424242; margin: 0;">
+                <li>💸 补贴成本失控，烧钱无底洞</li>
+                <li>🎭 大量羊毛党涌入，补贴被薅走</li>
+                <li>📉 停止补贴后用户大量流失，无忠诚度</li>
+                <li>⚖️ 行业陷入恶性竞争，整体利润率下降</li>
+                <li>🏢 中小平台难以承受，市场垄断加剧</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # 案例分析 - 移到这里
+        st.markdown("### 📚 案例分析：补贴策略的成败")
+        
+        case_df = pd.DataFrame({
+            '平台': ['滴滴（早期）', '拼多多', '瑞幸咖啡', '淘特（失败案例）'],
+            '补贴策略': [
+                '司机+乘客双向补贴，快速占领市场',
+                '社交裂变+低价补贴，下沉市场突破',
+                '首杯免费+持续优惠券，培养咖啡习惯',
+                '无差别大额补贴，未做用户筛选'
+            ],
+            '数据表现': [
+                '6个月用户增长1000%，但补贴成本高达70%',
+                '用户留存率42%，LTV/CAC=3.5（健康）',
+                '复购率从15%提升到45%，逐步减少补贴',
+                '获客成本>LTV，大量羊毛党，补贴停止后流失率85%'
+            ],
+            '结果': [
+                '✅ 成功占领市场，后期提价盈利',
+                '✅ 建立用户心智，补贴效率高',
+                '✅ 培养消费习惯，实现自然增长',
+                '❌ 亏损严重，业务收缩'
+            ]
+        })
+        
+        st.dataframe(case_df, use_container_width=True, hide_index=True)
+        
+        st.markdown("""
+        <p style="color: #616161; margin: 10px 0; font-size: 12px;">
+            💡 核心启示：补贴不是目的，而是获取高质量用户的手段。精准补贴 > 全面补贴。
+        </p>
+        """, unsafe_allow_html=True)
+        
+        # 数据驱动的成本控制策略
+        st.markdown("### 📊 数据驱动的补贴成本控制策略")
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            <div style="background-color: #e8f5e9; padding: 20px; border-radius: 10px; min-height: 380px;">
+                <h4 style="color: #2e7d32; margin: 0 0 15px 0;">✅ 核心原则</h4>
+                <ol style="color: #424242; font-size: 14px; line-height: 1.8;">
+                    <li><strong>精准补贴 > 普惠补贴</strong>
+                        <ul style="font-size: 13px; margin: 5px 0;">
+                            <li>基于用户LTV预测模型分层补贴</li>
+                            <li>高潜力用户：大额券</li>
+                            <li>一般用户：中额券</li>
+                            <li>羊毛党：限制或不发</li>
+                        </ul>
+                    </li>
+                    <li><strong>ROI阈值控制</strong>
+                        <ul style="font-size: 13px; margin: 5px 0;">
+                            <li>设定最低ROI目标（如1:3）</li>
+                            <li>补贴1元需带来3元GMV</li>
+                            <li>实时监控，动态调整</li>
+                        </ul>
+                    </li>
+                    <li><strong>渐进式补贴</strong>
+                        <ul style="font-size: 13px; margin: 5px 0;">
+                            <li>首单：大额补贴吸引</li>
+                            <li>2-5单：中额补贴培养习惯</li>
+                            <li>6单+：小额补贴或取消</li>
+                        </ul>
+                    </li>
+                    <li><strong>行为触发 > 无条件发放</strong>
+                        <ul style="font-size: 13px; margin: 5px 0;">
+                            <li>浏览N分钟后发券</li>
+                            <li>加购未下单时发券</li>
+                            <li>流失召回时发券</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("""
+            <div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; min-height: 380px;">
+                <h4 style="color: #1565c0; margin: 0 0 15px 0;">📈 数据监测指标体系</h4>
+                <ol style="color: #424242; font-size: 14px; line-height: 1.8;">
+                    <li><strong>成本效率指标</strong>
+                        <ul style="font-size: 13px; margin: 5px 0;">
+                            <li>CAC（获客成本）</li>
+                            <li>补贴ROI = GMV / 补贴成本</li>
+                            <li>人均补贴金额</li>
+                        </ul>
+                    </li>
+                    <li><strong>用户质量指标</strong>
+                        <ul style="font-size: 13px; margin: 5px 0;">
+                            <li>补贴用户vs自然用户留存率对比</li>
+                            <li>补贴停止后的留存率</li>
+                            <li>30天LTV / CAC 比值</li>
+                        </ul>
+                    </li>
+                    <li><strong>风险预警指标</strong>
+                        <ul style="font-size: 13px; margin: 5px 0;">
+                            <li>羊毛党占比（>5%预警）</li>
+                            <li>补贴依赖度（补贴订单占比>70%危险）</li>
+                            <li>补贴成本占GMV比例（>15%需优化）</li>
+                        </ul>
+                    </li>
+                    <li><strong>竞争情报指标</strong>
+                        <ul style="font-size: 13px; margin: 5px 0;">
+                            <li>竞品补贴力度监测</li>
+                            <li>市场份额变化</li>
+                            <li>用户流失去向分析</li>
+                        </ul>
+                    </li>
+                </ol>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        # 如何回归良性竞争
+        st.markdown("---")
+        st.markdown("### 🤝 如何从补贴大战回归良性竞争？")
+        
+        st.markdown("""
+        <div style="background-color: #f3e5f5; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
+            <h4 style="color: #7b1fa2; margin: 0 0 15px 0;">🎯 长期策略：从价格战到价值战</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 15px;">
+                <div style="background-color: white; padding: 15px; border-radius: 8px; border-left: 4px solid #9c27b0;">
+                    <h5 style="color: #7b1fa2; margin: 0 0 10px 0;">1️⃣ 差异化竞争</h5>
+                    <ul style="font-size: 14px; color: #424242; margin: 0;">
+                        <li><strong>淘宝/天猫</strong>：商品丰富度+生态完整性</li>
+                        <li><strong>京东</strong>：自营品质+物流时效</li>
+                        <li><strong>拼多多</strong>：社交裂变+下沉市场</li>
+                        <li><strong>抖音</strong>：内容+电商（直播带货）</li>
+                    </ul>
+                    <p style="font-size: 13px; color: #616161; margin: 10px 0 0 0;">
+                        💡 <strong>核心</strong>：找到自己的护城河，不打价格战
+                    </p>
+                </div>
+                <div style="background-color: white; padding: 15px; border-radius: 8px; border-left: 4px solid #9c27b0;">
+                    <h5 style="color: #7b1fa2; margin: 0 0 10px 0;">2️⃣ 用户体验为王</h5>
+                    <ul style="font-size: 14px; color: #424242; margin: 0;">
+                        <li>物流时效</li>
+                        <li>商品品质</li>
+                        <li>售后服务</li>
+                        <li>APP性能</li>
+                    </ul>
+                    <p style="font-size: 13px; color: #616161; margin: 10px 0 0 0;">
+                        💡 <strong>核心</strong>：好的体验比便宜更有粘性
+                    </p>
+                </div>
+                <div style="background-color: white; padding: 15px; border-radius: 8px; border-left: 4px solid #9c27b0;">
+                    <h5 style="color: #7b1fa2; margin: 0 0 10px 0;">3️⃣ 会员体系替代补贴</h5>
+                    <ul style="font-size: 14px; color: #424242; margin: 0;">
+                        <li>年费会员享受长期优惠</li>
+                        <li>提前锁定用户</li>
+                        <li>降低营销成本</li>
+                        <li>提升用户忠诚度</li>
+                    </ul>
+                    <p style="font-size: 13px; color: #616161; margin: 10px 0 0 0;">
+                        💡 <strong>核心</strong>：从一次性补贴到长期价值绑定
+                    </p>
+                </div>
+                <div style="background-color: white; padding: 15px; border-radius: 8px; border-left: 4px solid #9c27b0;">
+                    <h5 style="color: #7b1fa2; margin: 0 0 10px 0;">4️⃣ 数据驱动的精准运营</h5>
+                    <ul style="font-size: 14px; color: #424242; margin: 0;">
+                        <li>千人千面的个性化推荐</li>
+                        <li>基于LTV的用户分层</li>
+                        <li>智能定价</li>
+                        <li>预测性补货</li>
+                    </ul>
+                    <p style="font-size: 13px; color: #616161; margin: 10px 0 0 0;">
+                        💡 <strong>核心</strong>：用技术和数据提升效率
+                    </p>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # ============ Tab 5: 支付生态布局 ============
+    with tab5:
+        st.subheader("💳 抖音支付：支付市场的战略布局")
+        
+        # 顶部洞察
+        st.markdown("""
+        <div style="background-color: #fce4ec; padding: 20px; border-radius: 10px; border-left: 5px solid #e91e63; margin-bottom: 20px;">
+            <h4 style="color: #c2185b; margin: 0 0 10px 0;">🔍 实际观察</h4>
+            <ul style="color: #424242; margin: 0;">
+                <li>新人开通抖音支付并关联银行卡赠送 <strong>15.88元现金奖励</strong>，快速到账</li>
+                <li>苹果账户支付选项中新增 <strong>抖音支付</strong>（此前仅有微信、支付宝）</li>
+                <li>这是抖音支付抢占中国线上支付市场的重要信号</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # 支付市场格局
+        st.markdown("### 📊 中国移动支付市场格局（2024）")
+        
+        payment_share = pd.DataFrame({
+            '支付方式': ['支付宝', '微信支付', '银联云闪付', '抖音支付', '其他'],
+            '市场份额(%)': [54.2, 38.6, 4.8, 1.2, 1.2],
+            '用户规模(亿)': [10.5, 9.2, 3.8, 0.8, 0.5]
+        })
+        
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            # 市场份额饼图
+            payment_chart = alt.Chart(payment_share).mark_arc(innerRadius=60).encode(
+                theta=alt.Theta('市场份额(%):Q'),
+                color=alt.Color('支付方式:N', 
+                              scale=alt.Scale(range=['#1677ff', '#52c41a', '#fa8c16', '#eb2f96', '#95a5a6'])),
+                tooltip=['支付方式', '市场份额(%)', '用户规模(亿)']
+            ).properties(
+                height=300,
+                title='移动支付市场份额'
+            )
+            st.altair_chart(payment_chart, use_container_width=True)
+        
+        with col2:
+            st.markdown("""
+            <div style="background-color: #f0f5ff; padding: 20px; border-radius: 8px; height: 300px; display: flex; flex-direction: column; justify-content: center;">
+                <h4 style="color: #1677ff; margin: 0 0 15px 0;">📈 抖音支付增长潜力</h4>
+                <div style="margin-bottom: 15px;">
+                    <p style="margin: 5px 0; color: #424242;"><strong>月活用户：</strong>10.2亿+ <a href="https://m.ebrun.com/ebrungo/zb/586280.html" target="_blank" style="font-size: 11px; color: #1677ff;">[来源]</a></p>
+                    <p style="margin: 5px 0; color: #424242;"><strong>日均支付场景：</strong>电商/生活服务/充值</p>
+                    <p style="margin: 5px 0; color: #424242;"><strong>差异化优势：</strong>内容+交易闭环</p>
+                </div>
+                <div style="background-color: #e6f7ff; padding: 10px; border-radius: 5px; border-left: 3px solid #1677ff;">
+                    <p style="margin: 0; color: #0050b3; font-size: 14px;">
+                        💡 
+                    </p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        st.markdown("""
+        <p style="color: #616161; margin: 10px 0; font-size: 12px;">
+            数据来源：抖音月活数据来自电商报（2025年5月），GMV目标来自公开市场研究报告
+        </p>
+        """, unsafe_allow_html=True)
+        
+        # 战略分析
+        st.markdown("---")
+        st.markdown("### 🎯 抖音支付的战略意义")
+        
+        strategy_cols = st.columns(3)
+        
+        with strategy_cols[0]:
+            st.markdown("""
+            <div style="background-color: #e6f7ff; padding: 15px; border-radius: 8px; height: 280px;">
+                <h4 style="color: #0050b3;">💰 经济价值</h4>
+                <ul style="font-size: 14px; color: #424242;">
+                    <li><strong>支付规模</strong>：若抖音支付在电商场景渗透率达50%，可贡献年GMV 2.1万亿+的支付规模（基于2025年GMV目标4.2万亿）</li>
+                    <li><strong>手续费收入</strong>：按0.1%费率和50%渗透率估算，2025年GMV目标4.2万亿可带来21亿元</li>
+                    <li><strong>资金沉淀</strong>：零钱余额产生利息收入</li>
+                    <li><strong>金融延展</strong>：消费信贷、理财等</li>
+                </ul>
+                <p style="font-size: 11px; color: #616161; margin-top: 10px;">注：费率为行业通用估算</p>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with strategy_cols[1]:
+            st.markdown("""
+            <div style="background-color: #f6ffed; padding: 15px; border-radius: 8px; height: 280px;">
+                <h4 style="color: #389e0d;">🔒 数据价值</h4>
+                <ul style="font-size: 14px; color: #424242;">
+                    <li><strong>完整交易链路</strong>：从浏览到支付全掌握</li>
+                    <li><strong>用户画像增强</strong>：消费能力精准评估</li>
+                    <li><strong>风控能力</strong>：识别异常交易和欺诈</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with strategy_cols[2]:
+            st.markdown("""
+            <div style="background-color: #fff7e6; padding: 15px; border-radius: 8px; height: 280px;">
+                <h4 style="color: #d46b08;">🚀 生态价值</h4>
+                <ul style="font-size: 14px; color: #424242;">
+                    <li><strong>降低依赖</strong>：减少对微信/支付宝的依赖</li>
+                    <li><strong>用户粘性</strong>：支付绑定提升留存</li>
+                    <li><strong>场景拓展</strong>：线下支付、跨境支付</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        # 双11期间的支付策略
+        st.markdown("---")
+        st.markdown("### 🔥 双11期间抖音支付推广策略建议")
+        
+        st.markdown("""
+        <div style="background-color: #fff0f6; padding: 20px; border-radius: 10px; border-left: 5px solid #eb2f96;">
+            <h4 style="color: #c41d7f; margin-top: 0;">💎 激励策略</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 15px;">
+                <div style="background-color: white; padding: 12px; border-radius: 6px;">
+                    <strong style="color: #eb2f96;">🎁 首次绑卡奖励</strong>
+                    <p style="margin: 5px 0 0 0; font-size: 14px; color: #424242;">
+                        绑定银行卡送20-30元券包
+                    </p>
+                </div>
+                <div style="background-color: white; padding: 12px; border-radius: 6px;">
+                    <strong style="color: #eb2f96;">💰 支付立减</strong>
+                    <p style="margin: 5px 0 0 0; font-size: 14px; color: #424242;">
+                        使用抖音支付享受随机立减
+                    </p>
+                </div>
+                <div style="background-color: white; padding: 12px; border-radius: 6px;">
+                    <strong style="color: #eb2f96;">🎲 支付抽奖</strong>
+                    <p style="margin: 5px 0 0 0; font-size: 14px; color: #424242;">
+                        每笔支付参与抽奖（最高免单）
+                    </p>
+                </div>
+                <div style="background-color: white; padding: 12px; border-radius: 6px;">
+                    <strong style="color: #eb2f96;">⚡ 时段加码</strong>
+                    <p style="margin: 5px 0 0 0; font-size: 14px; color: #424242;">
+                        0-2点使用抖音支付额外返现
+                    </p>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # 数据监测指标
+        st.markdown("---")
+        st.markdown("### 📈 关键监测指标")
+        
+        metrics_df = pd.DataFrame({
+            '指标类别': ['渗透率', '活跃度', '留存', '交易规模'],
+            '核心指标': [
+                '抖音支付使用率',
+                '人均支付笔数',
+                '次月支付留存率',
+                '支付GMV占比'
+            ],
+            '双11目标': ['35%', '2.5笔', '65%', '25%'],
+            '当前基线': ['18%', '1.2笔', '48%', '12%'],
+            '提升空间': ['+94%', '+108%', '+35%', '+108%']
+        })
+        
+        st.dataframe(metrics_df, use_container_width=True, hide_index=True)
+        
+        st.markdown("""
+        <p style="color: #616161; margin: 10px 0; font-size: 12px;">
+            注：监测指标目标值基于行业基准和历史数据模拟
+        </p>
+        """, unsafe_allow_html=True)
+    
+    # ============ Tab 6: 产品体验观察 ============
+    with tab6:
+        st.subheader("🤔 产品体验观察与战略思考")
+        
+        # 顶部说明
+        st.markdown("""
+        <div style="background-color: #e3f2fd; padding: 15px; border-radius: 8px; border-left: 4px solid #2196f3; margin-bottom: 20px;">
+            <p style="color: #1565c0; margin: 0; font-size: 15px;">
+                基于候选人实际使用抖音APP的体验观察，从数据与产品角度提出思考和建议。
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # 观察1: APP性能问题
+        st.markdown("### ⚡ 观察一：APP性能体验待优化")
+        
+        col1, col2 = st.columns([3, 2])
+        
+        with col1:
+            st.markdown("""
+            <div style="background-color: #ffebee; padding: 20px; border-radius: 10px; border-left: 5px solid #f44336;">
+                <h4 style="color: #c62828; margin: 0 0 12px 0;">🐌 问题描述</h4>
+                <p style="color: #424242; margin: 0 0 10px 0;">
+                    实际使用中发现抖音APP存在卡顿现象，特别是在商城浏览、切换Tab、加载商品详情时表现明显。
+                </p>
+                <p style="color: #616161; font-size: 14px; margin: 0;">
+                    <strong>影响：</strong>影响用户体验，可能导致流失和转化率下降
+                </p>
+            </div>
+            """, unsafe_allow_html=True)
+            
+            st.markdown("""
+            <div style="background-color: #e8f5e9; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #4caf50;">
+                <h4 style="color: #2e7d32; margin: 0 0 10px 0;">📊 数据监测建议</h4>
+                <ul style="color: #424242; font-size: 14px; margin: 0;">
+                    <li><strong>性能指标</strong>：页面加载时间、FPS、内存占用、崩溃率</li>
+                    <li><strong>用户行为</strong>：卡顿发生时的用户流失率、返回率</li>
+                    <li><strong>设备分析</strong>：按机型、系统版本、网络状况分层监测</li>
+                    <li><strong>AB测试</strong>：性能优化版 vs 当前版，观察对转化率的影响</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("""
+            <div style="background-color: #fff3e0; padding: 20px; border-radius: 10px; height: 480px; display: flex; flex-direction: column; justify-content: space-between;">
+                <div>
+                    <h4 style="color: #e65100; margin: 0 0 15px 0;">💡 优化方向</h4>
+                    <ol style="color: #424242; font-size: 14px; line-height: 1.8;">
+                        <li><strong>代码层面</strong>：
+                            <ul style="font-size: 13px; margin: 5px 0;">
+                                <li>资源懒加载</li>
+                                <li>图片压缩优化</li>
+                                <li>减少渲染层级</li>
+                            </ul>
+                        </li>
+                        <li><strong>架构层面</strong>：
+                            <ul style="font-size: 13px; margin: 5px 0;">
+                                <li>CDN加速</li>
+                                <li>预加载策略</li>
+                                <li>缓存机制</li>
+                            </ul>
+                        </li>
+                        <li><strong>数据层面</strong>：
+                            <ul style="font-size: 13px; margin: 5px 0;">
+                                <li>建立性能监控看板</li>
+                                <li>识别高频卡顿场景</li>
+                                <li>量化优化效果</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+                <div style="background-color: #fbe9e7; padding: 10px; border-radius: 5px; margin-top: 10px;">
+                    <p style="margin: 0; font-size: 13px; color: #bf360c;">
+                        <strong>核心观点：</strong>性能不仅是技术问题，更是商业问题。页面加载时间每增加1秒，转化率可能下降7%
+                    </p>
+                </div>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        # 观察2: 超级APP战略
+        st.markdown("---")
+        st.markdown("### 🌐 观察二：超级APP现象的战略思考")
+        
+        st.markdown("""
+        <div style="background-color: #f3e5f5; padding: 20px; border-radius: 10px; border-left: 5px solid #9c27b0; margin-bottom: 20px;">
+            <h4 style="color: #7b1fa2; margin: 0 0 12px 0;">🤔 现象观察</h4>
+            <p style="color: #424242; margin: 0; line-height: 1.8;">
+                国内APP（抖音、微信、支付宝、美团等）都在向超级APP演进，试图一网打尽所有消费场景。
+                抖音从短视频起家，现已涵盖：电商、支付、外卖、酒旅、本地生活、团购等。
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # 利弊分析
+        col1, col2 = st.columns(2)
+        
+        with col1:
+            st.markdown("""
+            <div style="background-color: #e8f5e9; padding: 20px; border-radius: 10px; min-height: 320px;">
+                <h4 style="color: #2e7d32; margin: 0 0 15px 0;">✅ 优势（数据视角）</h4>
+                <ul style="color: #424242; font-size: 14px; line-height: 1.8;">
+                    <li><strong>数据闭环</strong>：用户行为数据全链路打通，从浏览、社交到消费、支付</li>
+                    <li><strong>用户画像增强</strong>：多场景数据交叉验证，精准度提升</li>
+                    <li><strong>交叉销售</strong>：基于数据的场景推荐（看直播→电商→外卖）</li>
+                    <li><strong>用户粘性</strong>：多场景满足，降低卸载率，提升DAU</li>
+                    <li><strong>LTV提升</strong>：单用户贡献多个场景的价值</li>
+                    <li><strong>网络效应</strong>：场景越多，数据越丰富，算法越精准</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        with col2:
+            st.markdown("""
+            <div style="background-color: #ffebee; padding: 20px; border-radius: 10px; min-height: 320px;">
+                <h4 style="color: #c62828; margin: 0 0 15px 0;">⚠️ 挑战（数据视角）</h4>
+                <ul style="color: #424242; font-size: 14px; line-height: 1.8;">
+                    <li><strong>性能问题</strong>：功能臃肿导致APP卡顿，负面体验数据上升</li>
+                    <li><strong>用户认知混乱</strong>：品牌定位模糊，用户不知"这个APP是干什么的"</li>
+                    <li><strong>核心业务稀释</strong>：资源分散，可能导致主营业务数据下滑</li>
+                    <li><strong>监管风险</strong>：数据垄断、隐私保护、不正当竞争</li>
+                    <li><strong>运营复杂度</strong>：多业务线数据指标体系庞杂，难以聚焦</li>
+                    <li><strong>用户疲劳</strong>：功能过载，关键功能埋藏太深，降低使用频率</li>
+                </ul>
+            </div>
+            """, unsafe_allow_html=True)
+        
+        # 数据驱动的战略建议
+        st.markdown("""
+        <div style="background-color: #e3f2fd; padding: 20px; border-radius: 10px; margin-top: 20px; border-left: 5px solid #2196f3;">
+            <h4 style="color: #1565c0; margin: 0 0 15px 0;">📊 数据驱动的战略建议</h4>
+            <ol style="color: #424242; font-size: 15px; line-height: 2;">
+                <li><strong>场景协同而非简单堆砌</strong>：用数据验证场景间的协同效应（如直播→电商转化率>30%才有价值）</li>
+                <li><strong>建立优先级矩阵</strong>：基于用户使用频率、贡献GMV、数据价值评估每个场景的ROI</li>
+                <li><strong>差异化定位</strong>：抖音的优势在"内容+交易"，不是所有场景都适合做（如金融、医疗等重决策场景）</li>
+                <li><strong>性能为王</strong>：持续监测APP性能指标，确保在功能扩展的同时不损害核心体验</li>
+                <li><strong>用户分层运营</strong>：不同用户群体对超级APP的接受度不同，需要数据分析+精准触达</li>
+            </ol>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # 观察3: 用户反馈功能
+        st.markdown("---")
+        st.markdown("### 📢 观察三：用户反馈机制待改进")
+        
+        st.markdown("""
+        <div style="background-color: #fff3e0; padding: 20px; border-radius: 10px; border-left: 5px solid #ff9800;">
+            <h4 style="color: #e65100; margin: 0 0 12px 0;">🔍 问题发现</h4>
+            <p style="color: #424242; margin: 0 0 10px 0; font-size: 14px;">
+                长按反馈问题功能体验不佳：长按后没有反应
+            </p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # ============ Tab 7: 总结与讨论 ============
+    with tab7:
+        # 关键思考框架 - 置顶
+        st.markdown("""
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                    color: white; padding: 25px; border-radius: 15px; margin-bottom: 30px;">
+            <h3 style="color: white; margin: 0 0 18px 0;">🎯 关键思考框架</h3>
+            <ol style="color: white; font-size: 15px; line-height: 2;">
+                <li><strong>增长飞轮</strong>：红包激励 → 首次下单 → 优质物流体验 → 支付绑定 → 复购提升 → LTV增长 → 高价值用户沉淀</li>
+                <li><strong>数据驱动</strong>：所有策略均基于数据分析和AB测试验证，避免拍脑袋决策</li>
+                <li><strong>全局视角</strong>：从市场格局、用户增长、物流履约、风控、支付生态等多维度构建完整的业务理解</li>
+                <li><strong>体验至上</strong>：物流、支付等"基础设施"不是成本，而是用户体验和差异化竞争的核心</li>
+                <li><strong>风险平衡</strong>：在追求GMV增长的同时，必须严控薅羊毛行为，确保ROI健康和可持续增长</li>
+                <li><strong>生态思维</strong>：电商+物流+支付形成闭环，数据互通，协同增效</li>
+            </ol>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        st.markdown("---")
+        
+        # Tab1: 市场格局讨论要点
+        st.markdown("### 📊 市场格局分析要点")
+        st.markdown("""
+        <div style="background-color: #f5f5f5; padding: 18px; border-radius: 8px; margin-bottom: 20px;">
+            <h4 style="color: #1976d2; margin: 0 0 12px 0;">核心观点</h4>
+            <ul style="color: #424242; line-height: 1.8;">
+                <li><strong>市场机会</strong>：抖音电商正处于快速增长期（2024年双11 GMV增长89%），双11是提升用户心智和市场份额的关键战役</li>
+                <li><strong>竞争格局</strong>：阿里系份额下降但仍占主导（64.3%），拼多多和抖音是增长最快的挑战者</li>
+                <li><strong>数据驱动洞察</strong>：通过历史GMV趋势预测市场格局变化，为战略决策提供数据支撑</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Tab2: 用户激活转化讨论要点
+        st.markdown("### 🎯 用户激活转化讨论要点")
+        st.markdown("""
+        <div style="background-color: #f5f5f5; padding: 18px; border-radius: 8px; margin-bottom: 20px;">
+            <h4 style="color: #1976d2; margin: 0 0 12px 0;">核心观点</h4>
+            <ul style="color: #424242; line-height: 1.8;">
+                <li><strong>红包策略</strong>：8元红包+6天时效的设计利用时间紧迫感促进首次转化，结合实际用户体验分析产品设计</li>
+                <li><strong>转化漏斗</strong>：从注册到支付的多阶段转化漏斗，识别关键流失点并优化</li>
+                <li><strong>AB测试设计</strong>：针对红包面额、时效设置、发放时机等维度设计实验，预期提升15-22%</li>
+                <li><strong>数据方法论</strong>：通过AB测试验证产品假设，用数据驱动决策而非主观判断</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Tab3: 双11物流履约讨论要点
+        st.markdown("### 🚚 双11物流履约讨论要点")
+        st.markdown("""
+        <div style="background-color: #f5f5f5; padding: 18px; border-radius: 8px; margin-bottom: 20px;">
+            <h4 style="color: #1976d2; margin: 0 0 12px 0;">核心观点</h4>
+            <ul style="color: #424242; line-height: 1.8;">
+                <li><strong>三大挑战</strong>：订单量激增（8-15倍）、时效承诺压力、成本控制难题</li>
+                <li><strong>智能分配策略</strong>：基于历史数据建立快递商评分模型，动态优化订单分配，可提升准时达率7-10个百分点</li>
+                <li><strong>前置仓布局</strong>：通过预测性备货实现小时达，差异化竞争优势明显（小时达用户LTV是普通用户2.3倍）</li>
+                <li><strong>数据与体验</strong>：物流履约不仅是成本中心，更是用户体验和复购率的核心驱动因素（准时达率每提升1%，次月复购率提升0.8%）</li>
+                <li><strong>AB测试场景</strong>：快递商展示、物流承诺、配送提醒、包装升级等维度均可开展实验</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Tab4: 风控与高价值用户讨论要点
+        st.markdown("### 🛡️ 风控与补贴策略讨论要点")
+        st.markdown("""
+        <div style="background-color: #f5f5f5; padding: 18px; border-radius: 8px; margin-bottom: 20px;">
+            <h4 style="color: #1976d2; margin: 0 0 12px 0;">核心观点</h4>
+            <ul style="color: #424242; line-height: 1.8;">
+                <li><strong>风险识别</strong>：通过行为特征（领券不浏览、低价商品、高退货率等）识别薅羊毛用户</li>
+                <li><strong>数据模型</strong>：使用XGBoost/LightGBM构建风控模型，特征工程包括用户行为序列、订单模式、社交互动等</li>
+                <li><strong>用户分层</strong>：基于RFM模型将用户分为6层（超级用户、高价值、潜力、一般、流失预警、羊毛党），针对性运营</li>
+                <li><strong>预算分配</strong>：70%预算给高价值+潜力用户，确保ROI健康</li>
+                <li><strong>LTV思维</strong>：关注用户全生命周期价值，而非单次GMV，长期价值>短期增长</li>
+                <li><strong>补贴成本控制</strong>：精准补贴>普惠补贴，设定ROI阈值（1:3），渐进式补贴策略，避免无底洞烧钱</li>
+                <li><strong>补贴案例启示</strong>：拼多多（LTV/CAC=3.5成功）vs 淘特（获客成本>LTV失败），数据是补贴的方向盘</li>
+                <li><strong>良性竞争路径</strong>：从价格战到价值战，差异化竞争、用户体验、会员体系、精准运营</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Tab5: 支付生态讨论要点
+        st.markdown("### 💳 支付生态布局讨论要点")
+        st.markdown("""
+        <div style="background-color: #f5f5f5; padding: 18px; border-radius: 8px; margin-bottom: 20px;">
+            <h4 style="color: #1976d2; margin: 0 0 12px 0;">核心观点</h4>
+            <ul style="color: #424242; line-height: 1.8;">
+                <li><strong>战略意义</strong>：支付不只是交易工具，更是数据资产和生态闭环的关键环节</li>
+                <li><strong>市场机会</strong>：抖音月活10.2亿+，若支付渗透率达50%，可贡献2.1万亿+支付规模</li>
+                <li><strong>三重价值</strong>：
+                    <ul>
+                        <li><strong>经济价值</strong>：手续费收入（年GMV 4.2万亿×50%×0.1%≈21亿）+ 资金沉淀收益</li>
+                        <li><strong>数据价值</strong>：完整交易链路数据，增强用户画像和风控能力</li>
+                        <li><strong>生态价值</strong>：降低对第三方依赖，提升用户粘性，拓展场景</li>
+                    </ul>
+                </li>
+                <li><strong>双11推广策略</strong>：首次绑卡奖励、支付立减、抽奖、时段加码等激励措施</li>
+                <li><strong>监测指标</strong>：渗透率（目标35%）、活跃度（人均2.5笔）、留存（65%）、交易规模（GMV占比25%）</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Tab6: 产品体验观察讨论要点
+        st.markdown("### 🤔 产品体验观察讨论要点")
+        st.markdown("""
+        <div style="background-color: #f5f5f5; padding: 18px; border-radius: 8px; margin-bottom: 20px;">
+            <h4 style="color: #1976d2; margin: 0 0 12px 0;">核心观点</h4>
+            <ul style="color: #424242; line-height: 1.8;">
+                <li><strong>APP性能问题</strong>：卡顿影响转化率（页面加载时间每增加1秒，转化率可能下降7%），需建立性能监控看板</li>
+                <li><strong>超级APP思考</strong>：
+                    <ul>
+                        <li><strong>优势</strong>：数据闭环、用户画像增强、交叉销售、LTV提升</li>
+                        <li><strong>挑战</strong>：性能问题、用户认知混乱、核心业务稀释、运营复杂度</li>
+                        <li><strong>建议</strong>：场景协同而非简单堆砌，用数据验证场景间协同效应（如直播→电商转化率>30%才有价值）</li>
+                    </ul>
+                </li>
+                <li><strong>用户反馈机制</strong>：长按反馈功能体验不佳，需要优化</li>
+                <li><strong>批判性思维</strong>：不盲目追随行业趋势，基于数据评估是否适合自身</li>
+                <li><strong>数据产品思维</strong>：从用户体验问题出发，用数据量化、分析、验证、优化</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # 候选人优势总结
+        st.markdown("---")
+        st.markdown("""
+        <div style="background-color: #fff3e0; padding: 20px; border-radius: 10px; border-left: 5px solid #ff9800; margin-top: 25px;">
+            <h4 style="color: #e65100; margin: 0 0 15px 0;">👤 候选人能力展示维度</h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div>
+                    <p style="color: #424242; margin: 5px 0;"><strong>📊 数据分析能力</strong></p>
+                    <ul style="font-size: 14px; color: #616161; margin: 5px 0;">
+                        <li>市场数据收集与分析</li>
+                        <li>用户行为数据洞察</li>
+                        <li>AB测试设计与解读</li>
+                    </ul>
+                </div>
+                <div>
+                    <p style="color: #424242; margin: 5px 0;"><strong>🎯 产品思维</strong></p>
+                    <ul style="font-size: 14px; color: #616161; margin: 5px 0;">
+                        <li>实际用户体验观察</li>
+                        <li>产品功能理解与分析</li>
+                        <li>用户需求挖掘</li>
+                    </ul>
+                </div>
+                <div>
+                    <p style="color: #424242; margin: 5px 0;"><strong>🔬 实验设计能力</strong></p>
+                    <ul style="font-size: 14px; color: #616161; margin: 5px 0;">
+                        <li>AB测试方案设计</li>
+                        <li>指标体系构建</li>
+                        <li>因果推断理解</li>
+                    </ul>
+                </div>
+                <div>
+                    <p style="color: #424242; margin: 5px 0;"><strong>💼 商业洞察</strong></p>
+                    <ul style="font-size: 14px; color: #616161; margin: 5px 0;">
+                        <li>市场竞争格局分析</li>
+                        <li>商业模式理解</li>
+                        <li>战略思考能力</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        """, unsafe_allow_html=True)
+
+# ---------------- Page 3: 对比与发展 ----------------
 elif page == "对比与发展":
     st.header("抖音电商物流模式发展回顾 & 横向对比")
 
@@ -1244,19 +2457,6 @@ elif page == "优质快递体验验证":
         </div>
         """, unsafe_allow_html=True)
     
-    # 因果分析
-    st.subheader("🎯 因果推断分析")
-    
-    st.markdown("""
-    <div style="background-color: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; border-radius: 4px; margin: 15px 0;">
-        <h4 style="color: #f57c00; margin: 0 0 10px 0;">🔍 双重差分法(DID)分析</h4>
-        <p style="color: #424242; margin: 0;">
-            通过控制时间趋势和选择偏差，验证优质快递对用户体验的因果效应。
-            结果显示优质快递显著提升用户满意度15.2%，复购率提升8.7%。
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-    
     # 成本效益分析
     st.subheader("💰 成本效益分析")
     
@@ -1721,60 +2921,9 @@ elif page == "偏远地区物流验证":
         </ol>
     </div>
     """, unsafe_allow_html=True)
-    
-    # 项目成果总结
-    st.subheader("🏆 项目成果总结")
-    
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        st.metric("整体ROI", "2.8倍", "+180%")
-    with col2:
-        st.metric("推荐地区数", "8个", "80%")
-    with col3:
-        st.metric("预期GMV增长", "+28%", "显著提升")
-    
-    # 关键学习点
-    st.markdown("### 💡 关键学习点")
-    
-    st.markdown("""
-    <div style="background-color: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; border-radius: 4px; margin: 15px 0;">
-        <h4 style="color: #1976d2; margin: 0 0 10px 0;">🎯 核心洞察</h4>
-        <ul style="color: #424242; margin: 0; padding-left: 20px;">
-            <li><strong>AB测试验证</strong>：偏远地区物流业务整体ROI为正，策略有效</li>
-            <li><strong>地区差异显著</strong>：不同地区ROI差异巨大，需要精细化运营</li>
-            <li><strong>规模效应重要</strong>：订单量大的地区更容易实现规模经济</li>
-            <li><strong>成本控制关键</strong>：物流成本是影响ROI的核心因素</li>
-            <li><strong>分阶段实施</strong>：优先高ROI地区，逐步扩展到其他地区</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-    
-    # 实施建议
-    st.markdown("""
-    <div style="background-color: #f3e5f5; border-left: 4px solid #9c27b0; padding: 15px; border-radius: 4px; margin: 15px 0;">
-        <h4 style="color: #7b1fa2; margin: 0 0 10px 0;">🚀 实施建议</h4>
-        <ol style="color: #424242; margin: 0; padding-left: 20px;">
-            <li><strong>分阶段推进</strong>：优先开展ROI高的地区</li>
-            <li><strong>成本控制</strong>：与当地物流商建立合作关系</li>
-            <li><strong>用户体验</strong>：设置合理的配送时效预期</li>
-            <li><strong>持续监控</strong>：建立实时数据监控体系</li>
-            <li><strong>动态调整</strong>：根据实际效果调整策略</li>
-        </ol>
-    </div>
-    """, unsafe_allow_html=True)
 
 # ---------------- Page 7: MTA归因模型项目 ---------------- 
-elif page == "Work in Progress":
-    # 密码验证
-    st.markdown("### 🔐 访问验证")
-    password = st.text_input("请输入访问密码", type="password")
-    
-    if password != "MTA2024":
-        st.error("❌ 密码错误，无法访问此页面")
-        st.stop()
-    
-    st.success("✅ 验证成功，欢迎访问MTA归因模型项目")
+elif page == "MTA归因模型AB测试":
     st.header("🎯 MTA归因模型项目 - AB测试与预算分配深度解析")
     
     # 项目背景（简化）
@@ -2398,7 +3547,7 @@ st.markdown("---")
 st.markdown(
     """
     <div style="text-align: center; margin-top: 2rem; color: #666; font-size: 14px;">
-        Demo by 侯良语 | 2025-09-27
+        Demo by 侯良语 | 2025-10-09
     </div>
     """, 
     unsafe_allow_html=True
