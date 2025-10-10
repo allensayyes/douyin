@@ -2935,7 +2935,7 @@ elif page == "MTA归因模型AB测试":
         <p style="color: #424242; margin: 0;">
             <strong>核心挑战：</strong>Last Click归因显示付费搜索贡献65%，但用户决策周期45-60天，前端渠道价值被严重低估<br>
             <strong>解决方案：</strong>构建Shapley Value归因模型，通过AB测试验证，重新分配预算<br>
-            <strong>AB测试规模：</strong>总预算的2%用于测试（$200万），验证模型效果后全量推广
+            <strong>AB测试规模：</strong>总预算的0.4%用于测试（$40万），验证模型效果后全量推广
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -3003,8 +3003,8 @@ elif page == "MTA归因模型AB测试":
             <ul style="color: #424242; margin: 0; padding-left: 20px;">
                 <li><strong>分层随机</strong>：按州、年龄、收入分层，确保每组在各维度分布相似</li>
                 <li><strong>哈希算法</strong>：user_id % 2 确保同一用户始终在同一组，避免分组漂移</li>
-                <li><strong>样本量</strong>：每组10万用户（合计20万）</li>
-                <li><strong>测试预算</strong>：每组$100万（总$200万）</li>
+                <li><strong>样本量</strong>：每组5万用户（合计10万）</li>
+                <li><strong>测试预算</strong>：每组$20万（总$40万）</li>
                 <li><strong>时间窗口</strong>：60天实验周期（符合45-60天决策周期）</li>
             </ul>
         </div>
@@ -3017,13 +3017,13 @@ elif page == "MTA归因模型AB测试":
     <div style="background-color: #e8f5e8; border-left: 4px solid #4caf50; padding: 15px; border-radius: 4px; margin: 15px 0;">
         <h4 style="color: #2e7d32; margin: 0 0 10px 0;">🧮 功效分析计算</h4>
         <p style="color: #424242; margin: 0;">
-            <strong>基于历史数据</strong>：原模型下转化率0.1%、CPA $280
+            <strong>基于历史数据</strong>：原模型下转化率1.4%、CPA $280
         </p>
         <ul style="color: #424242; margin: 10px 0 0 0; padding-left: 20px;">
             <li><strong>α=0.05</strong>：假阳性率（5%显著性水平）</li>
             <li><strong>1-β=0.8</strong>：80%检测效力</li>
             <li><strong>MDE</strong>：转化率提升0.05%、CPA下降10%</li>
-            <li><strong>最终确定</strong>：每组覆盖10万用户（合计20万）</li>
+            <li><strong>最终确定</strong>：每组覆盖5万用户（合计10万）</li>
         </ul>
     </div>
     """, unsafe_allow_html=True)
@@ -3050,13 +3050,13 @@ elif page == "MTA归因模型AB测试":
     with col1:
         st.markdown("""
         <div style="background-color: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; border-radius: 4px; margin: 10px 0;">
-            <h4 style="color: #f57c00; margin: 0 0 10px 0;">🎯 实验组策略 ($100万预算)</h4>
+            <h4 style="color: #f57c00; margin: 0 0 10px 0;">🎯 实验组策略 ($20万预算)</h4>
             <ul style="color: #424242; margin: 0; padding-left: 20px;">
-                <li><strong>Paid Search</strong>：$70万 → $45万 (-$25万)</li>
-                <li><strong>Display</strong>：$15万 → $15万 (0)</li>
-                <li><strong>Social Media</strong>：$10万 → $18万 (+$8万)</li>
-                <li><strong>Affiliate</strong>：$5万 → $22万 (+$17万)</li>
-                <li><strong>总预算</strong>：$100万 (保持不变)</li>
+                <li><strong>Paid Search</strong>：$14万 → $9万 (-$5万)</li>
+                <li><strong>Display</strong>：$3万 → $3万 (0)</li>
+                <li><strong>Social Media</strong>：$2万 → $3.6万 (+$1.6万)</li>
+                <li><strong>Affiliate</strong>：$1万 → $4.4万 (+$3.4万)</li>
+                <li><strong>总预算</strong>：$20万 (保持不变)</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -3064,13 +3064,13 @@ elif page == "MTA归因模型AB测试":
     with col2:
         st.markdown("""
         <div style="background-color: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; border-radius: 4px; margin: 10px 0;">
-            <h4 style="color: #1976d2; margin: 0 0 10px 0;">📊 对照组策略 ($100万预算)</h4>
+            <h4 style="color: #1976d2; margin: 0 0 10px 0;">📊 对照组策略 ($20万预算)</h4>
             <ul style="color: #424242; margin: 0; padding-left: 20px;">
-                <li><strong>Paid Search</strong>：$65万 (65%基准，Last Click权重)</li>
-                <li><strong>Display</strong>：$5万 (5%基准，Last Click权重)</li>
-                <li><strong>Social Media</strong>：$8万 (8%基准，Last Click权重)</li>
-                <li><strong>Affiliate</strong>：$22万 (22%基准，Last Click权重)</li>
-                <li><strong>总预算</strong>：$100万 (保持不变)</li>
+                <li><strong>Paid Search</strong>：$13万 (65%基准，Last Click权重)</li>
+                <li><strong>Display</strong>：$1万 (5%基准，Last Click权重)</li>
+                <li><strong>Social Media</strong>：$1.6万 (8%基准，Last Click权重)</li>
+                <li><strong>Affiliate</strong>：$4.4万 (22%基准，Last Click权重)</li>
+                <li><strong>总预算</strong>：$20万 (保持不变)</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -3080,11 +3080,11 @@ elif page == "MTA归因模型AB测试":
     
     # 模拟AB测试数据
     np.random.seed(42)
-    n_users = 500000  # 每组50万用户
+    n_users = 50000  # 每组5万用户
     
     # 实验组数据
     treatment_data = {
-        'conversions': np.random.binomial(1, 0.002, n_users),  # 0.2%转化率
+        'conversions': np.random.binomial(1, 0.02, n_users),  # 2.0%转化率
         'revenue': np.random.normal(1200, 200, n_users),  # 平均收入$1200
         'cost': np.random.normal(200, 20, n_users),  # 平均成本$200
         'group': '实验组'
@@ -3092,7 +3092,7 @@ elif page == "MTA归因模型AB测试":
     
     # 对照组数据
     control_data = {
-        'conversions': np.random.binomial(1, 0.001, n_users),  # 0.1%转化率
+        'conversions': np.random.binomial(1, 0.014, n_users),  # 1.4%转化率
         'revenue': np.random.normal(1000, 180, n_users),  # 平均收入$1000
         'cost': np.random.normal(280, 25, n_users),  # 平均成本$280
         'group': '对照组'
@@ -3208,9 +3208,9 @@ elif page == "MTA归因模型AB测试":
     
     test_results = pd.DataFrame({
         '指标': ['转化率', 'CPA', 'ROAS', '总收入'],
-        '实验组': ['0.200%', '$200', '6.0x', '$1.2M'],
-        '对照组': ['0.100%', '$280', '3.6x', '$1.0M'],
-        '提升幅度': ['+100%', '-28.6%', '+66.7%', '+20%'],
+        '实验组': ['2.0%', '$200', '6.0x', '$1.2M'],
+        '对照组': ['1.4%', '$280', '4.24x', '$1.0M'],
+        '提升幅度': ['+40%', '-28.6%', '+41.5%', '+20%'],
         '统计量': ['Z=15.8', 't=-12.5', 't=8.2', 't=5.1'],
         'p值': ['<0.001', '<0.001', '<0.001', '<0.001'],
         '显著性': ['***', '***', '***', '***']
@@ -3272,9 +3272,9 @@ elif page == "MTA归因模型AB测试":
         <div style="background-color: #fff3e0; border-left: 4px solid #ff9800; padding: 15px; border-radius: 4px; margin: 10px 0;">
             <h4 style="color: #f57c00; margin: 0 0 10px 0;">💼 业务显著性</h4>
             <ul style="color: #424242; margin: 0; padding-left: 20px;">
-                <li>转化率：0.1%→0.2%（翻倍）</li>
-                <li>CPA：280→200（-28%）</li>
-                <li>ROAS：2.1→3.2（+52%）</li>
+                <li>转化率：1.4%→2.0%（+40%）</li>
+                <li>CPA：280→200（-28.6%）</li>
+                <li>ROAS：4.24→6.0（+41.5%）</li>
                 <li>均远超MDE阈值</li>
             </ul>
         </div>
@@ -3394,7 +3394,7 @@ elif page == "MTA归因模型AB测试":
     st.markdown("### 💰 预算削减计算逻辑详解")
     
     # 为什么削减2500万的计算过程
-    st.markdown("#### 🧮 为什么削减Paid Search 2500万美元？")
+    st.markdown("#### 🧮 为什么削减Paid Search 1750万美元？")
     
     col1, col2 = st.columns(2)
     
@@ -3405,9 +3405,9 @@ elif page == "MTA归因模型AB测试":
             <ol style="color: #424242; margin: 0; padding-left: 20px;">
                 <li><strong>Shapley权重</strong>：Paid Search = 45%</li>
                 <li><strong>理论预算</strong>：$100M × 45% = $45M</li>
-                <li><strong>业务约束</strong>：Search占比≥30% = $30M</li>
-                <li><strong>最终预算</strong>：max($45M, $30M) = $45M</li>
-                <li><strong>削减金额</strong>：$70M - $45M = $25M</li>
+                <li><strong>业务约束</strong>：单渠道变化≤25% = $52.5M</li>
+                <li><strong>最终预算</strong>：max($45M, $52.5M) = $52.5M</li>
+                <li><strong>削减金额</strong>：$70M - $52.5M = $17.5M</li>
             </ol>
         </div>
         """, unsafe_allow_html=True)
@@ -3421,7 +3421,7 @@ elif page == "MTA归因模型AB测试":
                 <li><strong>品牌安全要求</strong>：Search占比≥30%</li>
                 <li><strong>渠道容量限制</strong>：Social≤$30M</li>
                 <li><strong>季节性调整</strong>：Q4预算±20%</li>
-                <li><strong>风险控制</strong>：单渠道变化≤25%</li>
+                <li><strong>风险控制</strong>：单渠道变化≤25% (e.g., Paid Search 70M → 45M = 35% change, if restricted it should be 70M - 17.5M = 52.5M)</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -3430,11 +3430,11 @@ elif page == "MTA归因模型AB测试":
     st.markdown("#### 📋 详细计算过程")
     
     calculation_steps = pd.DataFrame({
-        '步骤': ['Shapley权重分析', '理论预算计算', '约束条件应用', '最终预算分配', '预算变化'],
-        'Paid Search': ['45%', '$45M', '$45M (≥30%)', '$45M', '-$25M'],
-        'Display': ['15%', '$15M', '$15M', '$15M', '$0M'],
-        'Social Media': ['18%', '$18M', '$18M', '$18M', '+$8M'],
-        'Affiliate': ['22%', '$22M', '$22M', '$22M', '+$17M'],
+        '步骤(Step)': ['Shapley权重分析(Shapley Weight Analysis)', '理论预算计算(Theoretical Budget Calculation)', '约束条件应用(Constraint Application)', '最终预算分配(Final Budget Allocation)', '预算变化(Budget Change)'],
+        'Paid Search': ['45%', '$45M', '$52.5M (受25%限制)', '$52.5M', '-$17.5M'],
+        'Display': ['15%', '$15M', '$20M', '$20M', '+$5M'],
+        'Social Media': ['18%', '$18M', '$12.5M', '$12.5M', '+$2.5M'],
+        'Affiliate': ['22%', '$22M', '$15M', '$15M', '+$10M'],
         '说明': [
             'Shapley Value归因结果',
             '按权重分配预算',
@@ -3521,11 +3521,11 @@ elif page == "MTA归因模型AB测试":
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        st.metric("转化率提升", "0.1% → 0.2%", "+100%")
+        st.metric("转化率提升", "1.4% → 2.0%", "+40%")
     with col2:
         st.metric("CPA降低", "$280 → $200", "-28.6%")
     with col3:
-        st.metric("ROAS提升", "2.1x → 3.2x", "+52.4%")
+        st.metric("ROAS提升", "4.24x → 6.0x", "+41.5%")
     
     # 关键学习点
     st.markdown("### 💡 关键学习点")
